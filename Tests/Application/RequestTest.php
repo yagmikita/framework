@@ -12,18 +12,16 @@ class RequestTest extends Tests\TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->request = new Application\Request;
     }
     
     public function tearDown()
     {
         parent::tearDown();
-        unset($this->request);
     }
     
     public function testSmth()
     {
-        
+        $this->assertTrue(1==1);
     }
     
 }

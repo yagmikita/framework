@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Library;
+namespace Tests\Types;
 
 use Tests,
     Types,
@@ -13,26 +13,32 @@ class TArrayTest extends Tests\TestCase
     public function goodValues()
     {
         return array(
-            array(''),
-            array(1, 2, 3),
-            array('234', 'test', 234, 99, 100.54)
+            array(
+                array('')
+            ),
+            array(
+                array(1, 2, 3)
+            ),
+            array(
+                array('234', 'test', 234, 99, 100.54)
+            )
         );
     }
     
     public function badValues()
     {
         return array(
-            11,
-            'test',
-            23.23
+            array(11),
+            array('test'),
+            array(23.23)
         );
     }
  
     /**
      * @dataProvider goodValues
      */
-    public function testCreateSuccess(array $ar)
-    {
+    public function testCreateSuccess($ar)
+    {//var_dump($ar);exit;
         $ta = new Types\TArray($ar);
         $this->assertTrue($ta instanceof Types\TArray);
         $this->assertTrue($ta->length() == count($ar));
@@ -50,7 +56,7 @@ class TArrayTest extends Tests\TestCase
      * @dataProvider badValues
      * @expectedException Application\Exceptions\TypeException
      */
-    public function testCreateFails(array $ar)
+    public function testCreateFails($ar)
     {
         $ta = new Types\TArray($ar);
     }

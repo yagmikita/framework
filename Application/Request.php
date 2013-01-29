@@ -11,7 +11,9 @@
  * @link     http://192.168.7.101/docs/application/request
  */
 
-namespace Application\Request;
+namespace Application;
+
+use Prototypes\Abstracts as A;
 
 /**
  * Request object that aids to manage requests in a OOP-way
@@ -22,7 +24,7 @@ namespace Application\Request;
  * @license  GNU GPL
  * @link     http://192.168.7.101/docs/application/request/request
  */
-class Request extends \Prototypes\Abstracts\RequestAbstract
+class Request extends A\RequestAbstract
 {
     /**
      * Public constructor

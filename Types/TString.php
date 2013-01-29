@@ -2,7 +2,7 @@
 
 namespace Types;
 
-use Traits as T,
+use Types as TE,
     Prototypes\Abstracts as A,        
     Prototypes\Interfaces as I,
     Application\Exceptions as E;
@@ -10,9 +10,9 @@ use Traits as T,
 /**
  * Implementation of String class, which is the wrapper of a string type
  */
-class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValidType
+class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValidTypeInterface
 {
-    public function __construct($value)
+    public function __construct($value = null)
     {
         parent::__construct($value, '');
     }
@@ -38,7 +38,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function explode($separator = ' ')
     {
-        return new Types\TArray(explode($separator, $this->__get('_value')));
+        return new TE\TArray(explode($separator, $this->trim()));
     }
     
     /**
@@ -49,7 +49,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function substitute(array $subs = array())
     {
-        return vprintf($this->__get('_value'), $subs);
+        return new TE\TString(vprintf($this->__get('_value'), $subs));
     }
     
     /**
@@ -62,7 +62,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
     {
         $from = is_null($from)?0:intval($to);
         $to   = is_null($to)?$this->length():intval($to);
-        return substr($this->__get('_value'), $from, $to);
+        return new TE\TString(substr($this->value(), $from, $to));
     }
     
     /**
@@ -70,16 +70,21 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      * @param php string $separator
      * @return php string
      */
-    public function toCamelCase($separator = " ")
+    public function toCamelCase($separator = ' ')
     {
         $complete = '';
-        $parts = explode($separator, $this->__get('_value'));
-        foreach ($parts as $key => $part) {
+        $parts = $this->explode($separator);
+        foreach ($parts->value() as $key => $part) {
+            $part = new TE\TString($part);            
             if ($key == 0) {
-                $complete .= $this->toLowerCase();
+                $complete = $part->toLowerCase()->value();
+            } else {
+                $complete .= $part->ucfirst()->value();
             }
         }
-        return $complete;
+        $cut = new TE\TString($complete);
+        var_dump($cut->cut(1, $cut->length()-1)->value());
+        return $cut->cut(1, $cut->length()-1);
     }
     
     /**
@@ -87,9 +92,63 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      * @param php string $separator
      * @return php string
      */
-    public function camelCase($separator = " ")
+    public function camelCase($separator = ' ')
     {
         return $this->toCamelCase($separator);
+    }
+
+    /**
+     * Converts all the string characters to lower case
+     * @return \Types\TString
+     */
+    public function toLowerCase()
+    {
+        return new TE\TString(strtolower($this->value()));
+    }
+    
+    /**
+     * Symlink to $this->toLowerCase()
+     * @return \Types\TString
+     */
+    public function lowerCase()
+    {
+        return $this->toLowerCase();
+    }
+    
+    /**
+     * Converts all the string characters to upper case
+     * @return \Types\TString
+     */
+    public function toUpperCase()
+    {
+        return new TE\TString(strtoupper($this->value()));
+    }
+    
+    /**
+     * Symlink to $this->toUpperCase()
+     * @return \Types\TString
+     */
+    public function upperCase()
+    {
+        return $this->toUpperCase();
+    }
+    
+    /**
+     * Converts the first string character to upper case
+     * @return \Types\TString
+     */
+    public function ucfirst()
+    {
+        return new TE\TString(ucfirst($this->value()));
+    } 
+ 
+    /**
+     * Trims trailing slashes
+     * @return \Types\TString
+     */
+    public function trim()
+    {
+        return new TE\TString(trim($this->value()));
     }
     
 }

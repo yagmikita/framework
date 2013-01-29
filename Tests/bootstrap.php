@@ -1,9 +1,5 @@
 <?php
 
-require_once(realpath(__DIR__ . '/../../../../customize_autoloader.php'));
+require_once(realpath(__DIR__.'/../AutoloaderPSR0.php'));
 
-\Application\Application::constants(
-    array(
-        array('name' => 'APP_ENV', 'value' => 'development')
-    )
-);
+spl_autoload_register('AutoloaderPSR0::autoload');

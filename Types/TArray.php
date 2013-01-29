@@ -3,7 +3,7 @@
 namespace Types;
 
 use Traits as T,
-    Types,
+    Types as TE,
     Prototypes\Abstracts as A,        
     Prototypes\Interfaces as I,
     Application\Exceptions as E;
@@ -15,7 +15,7 @@ class TArray extends A\TypeAbstract implements I\HasLengthInterface,  \Iterator
 {   
     protected $_position;
     
-    public function __construct($value)
+    public function __construct($value = null)
     {
         parent::__construct($value, array());
         $this->__set('_position', 0);
@@ -48,12 +48,14 @@ class TArray extends A\TypeAbstract implements I\HasLengthInterface,  \Iterator
 
     function next()
     {
-        $this->__set('_position', $this->__get('_position')++);
+        $pos = $this->__get('_position');
+        $this->__set('_position', $pos++);
     }
 
     function valid()
     {
-        return isset($this->current());
+        $cur = $this->current();
+        return isset($cur);
     }    
     
     /**
@@ -62,7 +64,7 @@ class TArray extends A\TypeAbstract implements I\HasLengthInterface,  \Iterator
     
     public function implode($separator = ',')
     {
-        return new Types\TString(implode($separator, $this->__get('_value')));
+        return new TE\TString(implode($separator, $this->__get('_value')));
     }
     
 }
