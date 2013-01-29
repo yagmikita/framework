@@ -1,0 +1,21 @@
+{
+    "name": "yagmikita/framework",
+    "type": "library",
+    "keywords": [
+        "framework",
+	"mvc",
+	"php-5.4",
+	"psr-0"
+    ],
+    "authors": [
+        {
+            "name": "Gopkalo Nikita",
+            "email": "yagmikita@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+        "phpunit/PHPUnit": "3.7.*",
+    }
+}
