@@ -1,0 +1,13 @@
+<phpunit bootstrap="./bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="NG Framework Test Suite">
+            <directory>./NGTest/Types</directory>
+            <directory>./NGTest/Html</directory>
+            <directory>./NGTest/Helpers</directory>
+            <directory>./NGTest/Decorators</directory>
+            <directory>./NGTest/Validators</directory>
+            <directory>./NGTest/Application</directory>
+            <exclude>./NGTest/Common</exclude>
+        </testsuite>
+    </testsuites>
+</phpunit>

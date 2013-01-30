@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace NGTest\Common;
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {
