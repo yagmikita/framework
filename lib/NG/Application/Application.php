@@ -1,9 +1,9 @@
 <?php
 
-namespace Application;
+namespace NG\Application;
 
-use Application\Exceptions As E,
-    Traits as T;
+use NG\Application\Exceptions As E,
+    NG\Traits as T;
 
 class Application extends stdClass
 {

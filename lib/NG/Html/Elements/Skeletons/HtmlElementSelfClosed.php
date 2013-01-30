@@ -1,8 +1,8 @@
 <?php
 
-namespace Html\Elements\Skeletons;
+namespace NG\Html\Elements\Skeletons;
 
-use Prototypes\Abstracts as A;
+use NG\Prototypes\Abstracts as A;
 
 /**
  * Self-closed html element with has no inner content

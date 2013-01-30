@@ -2,10 +2,9 @@
 
 namespace Types;
 
-use Types as TE,
-    Prototypes\Abstracts as A,        
-    Prototypes\Interfaces as I,
-    Application\Exceptions as E;
+use NG\Prototypes\Abstracts as A,        
+    NG\Prototypes\Interfaces as I,
+    NG\Application\Exceptions as E;
 
 /**
  * Implementation of String class, which is the wrapper of a string type
@@ -38,7 +37,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function explode($separator = ' ')
     {
-        return new TE\TArray(explode($separator, $this->trim()));
+        return new TArray(explode($separator, $this->trim()));
     }
     
     /**
@@ -49,7 +48,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function substitute(array $subs = array())
     {
-        return new TE\TString(vprintf($this->__get('_value'), $subs));
+        return new TString(vprintf($this->__get('_value'), $subs));
     }
     
     /**
@@ -62,7 +61,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
     {
         $from = is_null($from)?0:intval($to);
         $to   = is_null($to)?$this->length():intval($to);
-        return new TE\TString(substr($this->value(), $from, $to));
+        return new TString(substr($this->value(), $from, $to));
     }
     
     /**
@@ -75,15 +74,15 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
         $complete = '';
         $parts = $this->explode($separator);
         foreach ($parts->value() as $key => $part) {
-            $part = new TE\TString($part);            
+            $part = new TString($part);            
             if ($key == 0) {
                 $complete = $part->toLowerCase()->value();
             } else {
                 $complete .= $part->ucfirst()->value();
             }
         }
-        $cut = new TE\TString($complete);
-        var_dump($cut->cut(1, $cut->length()-1)->value());
+        $cut = new TString($complete);
+        //var_dump($cut->cut(1, $cut->length()-1)->value());
         return $cut->cut(1, $cut->length()-1);
     }
     
@@ -103,7 +102,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function toLowerCase()
     {
-        return new TE\TString(strtolower($this->value()));
+        return new TString(strtolower($this->value()));
     }
     
     /**
@@ -121,7 +120,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function toUpperCase()
     {
-        return new TE\TString(strtoupper($this->value()));
+        return new TString(strtoupper($this->value()));
     }
     
     /**
@@ -139,7 +138,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function ucfirst()
     {
-        return new TE\TString(ucfirst($this->value()));
+        return new TString(ucfirst($this->value()));
     } 
  
     /**
@@ -148,7 +147,7 @@ class TString extends A\TypeAbstract implements I\HasLengthInterface, I\CanValid
      */
     public function trim()
     {
-        return new TE\TString(trim($this->value()));
+        return new TString(trim($this->value()));
     }
     
 }

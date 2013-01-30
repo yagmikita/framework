@@ -1,17 +1,17 @@
 <?php
 
-namespace Validators;
+namespace NG\Validators;
 
-use Types,
-    Prototypes\Abstracts as Abs;
+use NG\Types as TE,
+    NG\Prototypes\Abstracts as A;
 
-class isPhoneNumber extends Abs\Validator
+class isPhoneNumber extends A\Validator
 {
     protected $_defaultMessage = "The value is not a valid phone number (Example: (056)7692314)";
     
     public function validate($value)
     {
-        $value   = Types\String($value);
+        $value   = TE\String($value);
         $pattern = '/^(\(?(\d{3})\)?\s?-?\s?(\d{3})\s?-?\s?(\d{4}))$/gm';
         if (preg_match($pattern, $value))
             return true;

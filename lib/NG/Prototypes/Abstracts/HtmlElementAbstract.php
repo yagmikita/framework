@@ -1,12 +1,13 @@
 <?php
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
 
-use Traits as T,
-    Prototypes\Interfaces as I,
-    Application\Exceptions as error;
+use NG\Traits as T,
+    NG\Prototypes\Interfaces as I,
+    NG\Application\Exceptions as E,
+    NG\Validators\Manager\QueryValidatorsQueue;
 
-abstract class HtmlElementAbstract implements Intrf\HtmlElementInterface
+abstract class HtmlElementAbstract implements I\HtmlElementInterface
 {
     use T\magicGet, T\magicSet,
         T\setValidator, T\getValidator, T\hasValidator,
@@ -85,7 +86,7 @@ abstract class HtmlElementAbstract implements Intrf\HtmlElementInterface
     public function __construct(array $options)
     {
         if (!self::areOptionsValid($options))
-            throw new error\InvalidOptionsException();
+            throw new E\InvalidOptionsException();
         $attributes = isset($options['_attributes'])?$options['_attributes']:$this->__get('_defaultAttributes');
         $this->__set('_attributes', $attributes);
         $decorators  = isset($options['_decorators'])?$options['_decorators']:null;
@@ -128,7 +129,7 @@ abstract class HtmlElementAbstract implements Intrf\HtmlElementInterface
     
     public function proceedValidation()
     {
-        $manager = Validators\Manager\QueryValidatorsQueue($this->__get('_validators'));
+        $manager = QueryValidatorsQueue($this->__get('_validators'));
         if (!$manager->launchQueue($this->value())) {
             $this->__set('_validationErrors', $value);
             return false;

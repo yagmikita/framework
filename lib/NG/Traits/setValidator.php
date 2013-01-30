@@ -1,11 +1,11 @@
 <?php
 
-namespace Traits;
+namespace NG\Traits;
 
-use Prototypes\Interfaces as Intrf;
+use NG\Prototypes\Interfaces as I;
 
 trait setValidator {
-    public function setValidator(Intrf\Validator $validator)
+    public function setValidator(I\Validator $validator)
     {
         $this->__set('_validator', $validator);
     }

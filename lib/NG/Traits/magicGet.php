@@ -1,8 +1,8 @@
 <?php
 
-namespace Traits;
+namespace NG\Traits;
 
-use Application\Exceptions as error;
+use NG\Application\Exceptions as E;
 
 trait magicGet {
     public function __get($key)
@@ -13,6 +13,6 @@ trait magicGet {
         if (property_exists($this, $key)) {
             return $this->$key;
         }
-        throw new error\Http500Exception(sprintf(ERROR_PARAM, $key, get_class($this)));
+        throw new E\Http500Exception(sprintf(ERROR_PARAM, $key, get_class($this)));
     }
 }

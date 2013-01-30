@@ -1,12 +1,10 @@
 <?php
 
-namespace Types;
+namespace NG\Types;
 
-use Traits as T,
-    Types as TE,
-    Prototypes\Abstracts as A,        
-    Prototypes\Interfaces as I,
-    Application\Exceptions as E;
+use NG\Prototypes\Abstracts as A,        
+    NG\Prototypes\Interfaces as I,
+    NG\Application\Exceptions as E;
 
 /**
  * Implementation of Array class, which is the wrapper of a casual array type
@@ -64,7 +62,7 @@ class TArray extends A\TypeAbstract implements I\HasLengthInterface,  \Iterator
     
     public function implode($separator = ',')
     {
-        return new TE\TString(implode($separator, $this->__get('_value')));
+        return new TString(implode($separator, $this->__get('_value')));
     }
     
 }

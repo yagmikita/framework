@@ -1,11 +1,10 @@
 <?php
 
-namespace Tests\Library;
+namespace NGTest\Application;
 
-use Tests,
-    Application;
+use NGTest\Common\TestCase;
 
-class RequestTest extends Tests\TestCase
+class RequestTest extends TestCase
 {
     protected $request;
     

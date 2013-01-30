@@ -1,11 +1,11 @@
 <?php
 
-namespace Traits;
+namespace NG\Traits;
 
-use Prototypes\Interfaces as Intrf;
+use NG\Prototypes\Interfaces as I;
 
 trait setDecorator {
-    public function setDecorator(Intrf\Decorator $decorator)
+    public function setDecorator(I\Decorator $decorator)
     {
         $this->__set('_decorator', $decorator);
     }

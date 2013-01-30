@@ -1,10 +1,10 @@
 <?php
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
 
-use Traits as T,
-    Prototypes\Interfaces as I,
-    Application\Exceptions as E;
+use NG\Traits as T,
+    NG\Prototypes\Interfaces as I,
+    NG\Application\Exceptions as E;
 
 abstract class TypeAbstract implements I\HasValueInterface, \JsonSerializable, I\CanValidTypeInterface
 {

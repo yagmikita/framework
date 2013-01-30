@@ -1,8 +1,8 @@
 <?php
 
-namespace Application;
+namespace NG\Application;
 
-use Prototypes\Abstracts as A;
+use NG\Prototypes\Abstracts as A;
 
 class Response extends A\Response
 {

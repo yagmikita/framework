@@ -1,17 +1,17 @@
 <?php
 
-namespace Validators;
+namespace NG\Validators;
 
-use Types,
-    Prototypes\Abstracts as Abs;
+use NG\Types as TE,
+    NG\Prototypes\Abstracts as A;
 
-class isLatinString extends Abs\Validator
+class isLatinString extends A\Validator
 {
     protected $_defaultMessage = 'The value does not have a single cyrillic character';
     
     public function validate($value)
     {
-        $value   = Types\String($value);
+        $value   = TE\String($value);
         $pattern = '/[\p{A-Za-z\s0-9\-\+\=\.\,}]+/g';
         if (preg_match($pattern, $value->value()))
             return true;

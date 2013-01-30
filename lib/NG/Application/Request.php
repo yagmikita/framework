@@ -11,9 +11,9 @@
  * @link     http://192.168.7.101/docs/application/request
  */
 
-namespace Application;
+namespace NG\Application;
 
-use Prototypes\Abstracts as A;
+use NG\Prototypes\Abstracts as A;
 
 /**
  * Request object that aids to manage requests in a OOP-way

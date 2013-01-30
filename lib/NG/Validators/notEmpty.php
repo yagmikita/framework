@@ -1,10 +1,10 @@
 <?php
 
-namespace Validators;
+namespace NG\Validators;
 
-use Prototypes\Abstracts as Abs;
+use NG\Prototypes\Abstracts as A;
 
-class notEmpty extends Abs\Validator
+class notEmpty extends A\Validator
 {   
     protected $_defaultMessage = 'The value must not be empty';
     

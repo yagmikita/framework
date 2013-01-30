@@ -1,6 +1,6 @@
 <?php
 
-namespace \Helper;
+namespace NG\Helper;
 
 class Helper
 {

@@ -1,12 +1,10 @@
 <?php
 
-namespace Prototypes\Interfaces;
-
-use Prototypes\Interfaces as I;
+namespace NG\Prototypes\Interfaces;
 
 interface HasValidatorsInterface
 {
-    public function addValidator(I\Validator $validator);    
+    public function addValidator(\Validator $validator);    
     public function setValidators(array $validators);
     public function hasValidators();
     public function getValidators();

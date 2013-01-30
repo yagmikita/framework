@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Exceptions;
+namespace NG\Application\Exceptions;
 
 class Http500Exception extends \Exception
 {

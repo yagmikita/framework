@@ -1,10 +1,9 @@
 <?php
 
-namespace Validators\Manager;
+namespace NG\Validators\Manager;
 
-use Traits as T,
-    Validators,
-    Validators\Manager as Manager;
+use NG\Traits as T,
+    NG\Validators as V;
 
 class ValidatorComposer
 {
@@ -120,7 +119,7 @@ class ValidatorComposer
     
     public function getFullyQualifiedValidatorName()
     {
-        return "Validators\\" . $this->compileName();
+        return "NG\\Validators\\" . $this->compileName();
     }
     
     protected function compileName()

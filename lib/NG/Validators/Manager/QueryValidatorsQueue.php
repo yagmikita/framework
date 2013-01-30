@@ -1,10 +1,9 @@
 <?php
 
-namespace Validators\Manager;
+namespace NG\Validators\Manager;
 
-use Traits as T,
-    Validators,
-    Validators\Manager as Manager;
+use NG\Traits as T,
+    NG\Validators\Manager as M;
 
 class QueryValidatorsQueue
 {
@@ -47,7 +46,7 @@ class QueryValidatorsQueue
      */
     public function launchQueue($value)
     {
-        $composer = new Manager\ValidatorComposer;  
+        $composer = new M\ValidatorComposer;  
         foreach ($this->__get('_validators') as $key => $validatorOpts) {           
             $name = $validatorOpts['name'];
             $params = isset($validatorOpts['params'])?$validatorOpts['params']:array();            

@@ -1,6 +1,6 @@
 <?php
 
-namespace Traits;
+namespace NG\Traits;
 
 trait getValidator {
     public function getValidator()

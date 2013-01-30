@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototypes\Interfaces;
+namespace NG\Prototypes\Interfaces;
 
 interface HasValueInterface
 {

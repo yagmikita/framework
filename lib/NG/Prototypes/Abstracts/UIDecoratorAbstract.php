@@ -11,7 +11,9 @@
  * @link     http://192.168.7.101/docs/decorators/ui/
  */
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
+
+use NG\Prototypes\Interfaces as I;
 
 /**
  * Abstract user interface decorator class, differs from
@@ -23,7 +25,7 @@ namespace Prototypes\Abstracts;
  * @license  GNU GPL
  * @link     http://192.168.7.101/docs/decorators/ui/form/
  */
-abstract class UIDecoratorAbstract extends \DecoratorInterface
+abstract class UIDecoratorAbstract extends I\DecoratorInterface
 {
     protected $_pattern;
 }

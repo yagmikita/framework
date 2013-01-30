@@ -1,9 +1,9 @@
 <?php
 
-namespace Html\Elements\Skeletons;
+namespace NG\Html\Elements\Skeletons;
 
-use Prototypes\Interfaces as I,
-    Prototypes\Abstracts as A;
+use NG\Prototypes\Interfaces as I,
+    NG\Prototypes\Abstracts as A;
 
 /**
  * Container html element with inner content

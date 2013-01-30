@@ -1,13 +1,13 @@
 <?php
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
 
-use Traits,
-    Prototypes\Interfaces as I;
+use NG\Traits as T,
+    NG\Prototypes\Interfaces as I;
 
 abstract class DecoratorAbstract implements I\DecoratorInterface
 {
-    use Traits\magicGet, Traits\magicSet;
+    use T\magicGet, T\magicSet;
     
     protected $_params;
     protected $_decoration;

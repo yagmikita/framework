@@ -1,14 +1,14 @@
 <?php
 
-namespace Traits;
+namespace NG\Traits;
 
-use Prototypes\Interfaces as Intrf;
+use NG\Prototypes\Interfaces as I;
 
 trait hasDecorator {
     public function hasDecorator()
     {
         $d = $this->__get('_decorator');
-        if ($d instanceof Intrf\Decorator)
+        if ($d instanceof I\Decorator)
             return true;
         return false;
     }

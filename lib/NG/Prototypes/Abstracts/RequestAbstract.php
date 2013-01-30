@@ -1,9 +1,9 @@
 <?php
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
 
-use Types,
-    Traits as T,
+use NG\Types as TE,
+    NG\Traits as T,
     Prototypes\Interfaces as I;
 
 abstract class RequestAbstract implements I\RequestInterface
@@ -46,7 +46,7 @@ abstract class RequestAbstract implements I\RequestInterface
     
     public function dispatchRequest()
     {
-        $reqs = new Types\TArray(explode('/', $this->__get('_request')));
+        $reqs = new TE\TArray(explode('/', $this->__get('_request')));
     }
     
 }

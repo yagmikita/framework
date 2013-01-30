@@ -11,10 +11,10 @@
  * @link     http://192.168.7.101/docs/decorators/ui/
  */
 
-namespace Decorators\UI;
+namespace NG\Decorators\UI;
 
-use Prototypes\Abstracts as A,
-    Types;
+use NG\Prototypes\Abstracts as A,
+    NG\Types as TE;
 
 /**
  * Standart html form decorator, which covers the content
@@ -46,7 +46,7 @@ class Form extends A\UIDecorator
         );        
         $this->__set(
             '_decoration',
-            is_null($decoration)?(new Types\String($this->__get('_pattern'))):$decoration
+            is_null($decoration)?(new TE\String($this->__get('_pattern'))):$decoration
         );
     }
     
@@ -55,7 +55,7 @@ class Form extends A\UIDecorator
      * 
      * @return string
      */
-    public function decorate(Types\String $poition)
+    public function decorate(TE\String $poition)
     {
         return sprintf(
             $this->__get('_decoration'),

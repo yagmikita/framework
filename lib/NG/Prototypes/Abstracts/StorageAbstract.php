@@ -1,8 +1,8 @@
 <?php
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
 
-use Prototypes\Interfaces as I;
+use NG\Prototypes\Interfaces as I;
 
 class StorageAbstract implements I\StorageInterface
 {

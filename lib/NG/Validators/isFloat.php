@@ -1,10 +1,10 @@
 <?php
 
-namespace Validators;
+namespace NG\Validators;
 
-use Prototypes\Abstracts as Abs;
+use NG\Prototypes\Abstracts as A;
 
-class isFloat extends Abs\Validator
+class isFloat extends A\Validator
 {
     protected $_defaultMessage = 'The value is not a valid floating point number';
     

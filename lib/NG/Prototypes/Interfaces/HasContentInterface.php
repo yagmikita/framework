@@ -1,9 +1,9 @@
 <?php
 
-namespace Prototypes\Interfaces;
+namespace NG\Prototypes\Interfaces;
 
-use Types,
-    Prototypes\Interfaces as I;
+use NG\Types as TE,
+    NG\Prototypes\Interfaces as I;
 
 interface HasContentInterface
 {
@@ -11,6 +11,6 @@ interface HasContentInterface
     public function setElements(array $elements);
     public function getElements();
     public function renderElements();    
-    public function setContent(Types\String $content);
+    public function setContent(TE\String $content);
     public function getContent();   
 }

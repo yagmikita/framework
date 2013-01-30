@@ -1,10 +1,10 @@
 <?php
 
-namespace Prototypes\Interfaces;
+namespace NG\Prototypes\Interfaces;
 
-use Types;
+use NG\Types as TE;
 
 interface DecoratorInterface
 {
-    public function decorate(Types\String $poition);
+    public function decorate(TE\String $poition);
 }

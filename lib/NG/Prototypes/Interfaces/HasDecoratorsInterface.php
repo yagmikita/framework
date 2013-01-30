@@ -1,12 +1,10 @@
 <?php
 
-namespace Prototypes\Interfaces;
-
-use Prototypes\Interfaces as I;
+namespace NG\Prototypes\Interfaces;
 
 interface HasDecoratorsInterface
 {
-    public function addDecorator(I\Decorator $decorator);
+    public function addDecorator(\Decorator $decorator);
     public function setDecorators(array $decorators);
     public function hasDecorators();    
     public function getDecorator();

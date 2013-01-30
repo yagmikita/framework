@@ -1,17 +1,17 @@
 <?php
 
-namespace Validators;
+namespace NG\Validators;
 
-use Types,
-    Prototypes\Abstracts as Abs;
+use NG\Types as TE,
+    NG\Prototypes\Abstracts as A;
 
-class isCreditCardFormat extends Abs\Validator
+class isCreditCardFormat extends A\Validator
 {
     protected $_defaultMessage = 'The value is not a valid Credit Card number';
     
     public function validate($value)
     {
-        $value   = Types\String($value);
+        $value   = TE\String($value);
         $pattern = '/^\d{4}[\s\-]?\d{4}[\s\-]?\d{4}[\s\-]?\d{4}$/g';
         if (preg_match($pattern, $value))
             return true;

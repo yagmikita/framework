@@ -1,10 +1,10 @@
 <?php
 
-namespace Validators;
+namespace NG\Validators;
 
-use Prototypes\Abstracts as Abs;
+use NG\Prototypes\Abstracts as A;
 
-class isNumeric extends Abs\Validator
+class isNumeric extends A\Validator
 {
     protected $_defaultMessage = 'The value is not a number';
     

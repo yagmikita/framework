@@ -1,10 +1,10 @@
 <?php
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
 
-use Types,
-    Traits as T,
-    Prototypes\Interfaces as I;
+use NG\Types as TE,
+    NG\Traits as T,
+    NG\Prototypes\Interfaces as I;
 
 abstract class ValidatorAbstract implements I\ValidatorInterface
 {
@@ -19,7 +19,7 @@ abstract class ValidatorAbstract implements I\ValidatorInterface
     public function __construct(array $params = array(), $errorMsg = '')
     {
         $this->__set('_params', $params);
-        $msg = new Types\String($errorMsg);
+        $msg = new TE\String($errorMsg);
         if ($msg->length())
             self::$MSG_INVALID_VALUE = $msg->value();
         else

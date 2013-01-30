@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Types;
+namespace NGTest\Types;
 
-use Tests,
-    Types,
-    Application\Exceptions;
+use NG\Types,
+    NGTest\Common\TestCase,
+    NG\Application\Exceptions;
 
-class TArrayTest extends Tests\TestCase
+class TArrayTest extends TestCase
 {
     public $array;
     
@@ -54,7 +54,7 @@ class TArrayTest extends Tests\TestCase
     
     /**
      * @dataProvider badValues
-     * @expectedException Application\Exceptions\TypeException
+     * @expectedException NG\Application\Exceptions\TypeException
      */
     public function testCreateFails($ar)
     {

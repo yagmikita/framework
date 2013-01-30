@@ -1,14 +1,14 @@
 <?php
 
-namespace Traits;
+namespace NG\Traits;
 
-use Prototypes\Interfaces as Intrf;
+use NG\Prototypes\Interfaces as I;
 
 trait hasValidator {
     public function hasValidator()
     {
         $v = $this->__get('_validator');
-        if ($v instanceof Intrf\Validator)
+        if ($v instanceof I\Validator)
             return true;
         return false;
     }

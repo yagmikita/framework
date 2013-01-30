@@ -1,11 +1,11 @@
 <?php
 
-namespace Prototypes\Abstracts;
+namespace NG\Prototypes\Abstracts;
 
-use Traits as T,
-    Prototypes\Interfaces as Intrf;
+use NG\Traits as T,
+    NG\Prototypes\Interfaces as I;
 
-abstract class BuilderAbstract implements Intrf\BuilderInterface
+abstract class BuilderAbstract implements I\BuilderInterface
 {
     use T\magicGet, T\magicSet;
     

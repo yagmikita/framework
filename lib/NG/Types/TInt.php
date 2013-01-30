@@ -1,11 +1,10 @@
 <?php
 
-namespace Types;
+namespace NG\Types;
 
-use Traits as T,
-    Prototypes\Abstracts as A,        
-    Prototypes\Interfaces as I,
-    Application\Exceptions as E;
+use NG\Prototypes\Abstracts as A,        
+    NG\Prototypes\Interfaces as I,
+    NG\Application\Exceptions as E;
 
 class TInt extends A\TypeAbstract
 {   
