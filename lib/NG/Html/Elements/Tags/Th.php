@@ -6,5 +6,10 @@ use NG\Html\Elements\Skeletons as Skeletons;
 
 class Th extends Skeletons\HtmlElementContainer
 {
-    protected $_name = 'th'; 
+    public function __construct(array $options)
+    {
+        $options['_name'] = 'th';
+        parent::__construct($options);
+    }       
+    
 }

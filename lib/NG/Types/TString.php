@@ -1,6 +1,6 @@
 <?php
 
-namespace Types;
+namespace NG\Types;
 
 use NG\Prototypes\Abstracts as A,        
     NG\Prototypes\Interfaces as I,

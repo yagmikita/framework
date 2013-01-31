@@ -4,8 +4,8 @@ namespace NG\Prototypes\Interfaces;
 
 interface HasValidatorsInterface
 {
-    public function addValidator(\Validator $validator);    
-    public function setValidators(array $validators);
+    public function addValidator(ValidatorInterface $validator);    
+    public function setValidators(array $validators = null);
     public function hasValidators();
     public function getValidators();
     public function proceedValidation();

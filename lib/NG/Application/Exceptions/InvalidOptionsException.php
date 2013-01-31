@@ -2,7 +2,7 @@
 
 namespace NG\Application\Exceptions;
 
-class InvalidOptionsException extends Exception
+class InvalidOptionsException extends \Exception
 {
     public function __construct($message)
     {

@@ -6,5 +6,10 @@ use NG\Html\Elements\Skeletons as Skeletons;
 
 class Meta extends Skeletons\HtmlElementSelfClosed
 {
-    protected $_name = 'meta';
+    public function __construct(array $options)
+    {
+        $options['_name'] = 'meta';
+        parent::__construct($options);
+    }       
+    
 }

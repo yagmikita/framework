@@ -85,19 +85,25 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
      */
     public function __construct(array $options)
     {
-        if (!self::areOptionsValid($options))
-            throw new E\InvalidOptionsException();
         $attributes = isset($options['_attributes'])?$options['_attributes']:$this->__get('_defaultAttributes');
-        $this->__set('_attributes', $attributes);
         $decorators  = isset($options['_decorators'])?$options['_decorators']:null;
+        $validators  = isset($options['_validators'])?$options['_validators']:null;   
+        $options['_attributes'] = $attributes;
+        $options['_decorators'] = $decorators;
+        $options['_validators'] = $validators;
+        if (!self::areOptionsValid($options))
+            throw new E\InvalidOptionsException('The options you are trying to set are not valid', 500);
+        $this->__set('_name', $options['_name']);
+        $this->__set('_pattern', $options['_pattern']);
+        $this->__set('_selfClosed', $options['_selfClosed']);
+        $this->__set('_attributes', $attributes);
         $this->setDecorators($decorators);
-        $validators  = isset($options['_validators'])?$options['_validators']:null;
         $this->setValidators($validators);
     }
     
     public static function areOptionsValid(array $a)
     {
-        if (isset($a['_name'])&&isset($a['_attributes'])&&isset($a['_selfClosed'])&&isset($a['_pattern'])) {
+        if (isset($a['_name'])&&isset($a['_selfClosed'])&&isset($a['_pattern'])) {
             if (count($a['_attributes']))
                 return true;
             else
@@ -117,7 +123,7 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
         return $this->__get('_validators');
     }
     
-    public function setValidators(array $validators)
+    public function setValidators(array $validators = null)
     {
         $this->__set('_validators', $validators);
     }
@@ -151,7 +157,7 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
         return $this->__get('_decorators');
     }
     
-    public function setDecorators(array $decorators)
+    public function setDecorators(array $decorators = null)
     {
         $this->__set('_decorators', $decorators);
     }
@@ -163,6 +169,8 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
     
     public function applyDecorations($content)
     {
+        if (!count($this->__get('_decorators')))
+            return $content;
         foreach ($this->__get('_decorators') as $decorator) {
             $content = $decorator->decorate($content);
         }

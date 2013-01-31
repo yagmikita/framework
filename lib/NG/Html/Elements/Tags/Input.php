@@ -6,5 +6,9 @@ use NG\Html\Elements\Skeletons as Skeletons;
 
 class Input extends Skeletons\HtmlElementSelfClosed
 {
-    protected $_name = 'input';
+    public function __construct(array $options)
+    {
+        $options['_name'] = 'input';
+        parent::__construct($options);
+    }    
 }

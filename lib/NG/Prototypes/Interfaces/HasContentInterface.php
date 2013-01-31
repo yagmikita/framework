@@ -11,6 +11,6 @@ interface HasContentInterface
     public function setElements(array $elements);
     public function getElements();
     public function renderElements();    
-    public function setContent(TE\String $content);
+    public function setContent($content);
     public function getContent();   
 }

@@ -6,5 +6,10 @@ use NG\Html\Elements\Skeletons as Skeletons;
 
 class Hr extends Skeletons\HtmlElementSelfClosed
 {
-    protected $_name = 'hr';
+    public function __construct(array $options)
+    {
+        $options['_name'] = 'hr';
+        parent::__construct($options);
+    }       
+    
 }

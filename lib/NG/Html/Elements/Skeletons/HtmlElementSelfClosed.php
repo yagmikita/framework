@@ -18,9 +18,9 @@ class HtmlElementSelfClosed extends A\HtmlElementAbstract
      */    
     public function __construct(array $options)
     {
+        $options['_pattern'] = '<%s %s>';
+        $options['_selfClosed'] = true;
         parent::__construct($options);
-        $this->__set('_pattern', '<%s %s>');
-        $this->__set('_selfClosed', true);
     }
  
     /**
@@ -41,7 +41,7 @@ class HtmlElementSelfClosed extends A\HtmlElementAbstract
      * 
      * @return type php string
      */
-    public function value()
+    public function value($value = null)
     {
         return isset($this->__get('_attributes')['value'])?$this->__get('_attributes')['value']:'';
     }

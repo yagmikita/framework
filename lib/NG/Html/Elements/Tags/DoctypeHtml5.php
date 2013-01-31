@@ -8,14 +8,14 @@ class DoctypeHtml5 extends Skeletons\HtmlElementSelfClosed
 {
     protected $_name = '!DOCTYPE html';
     
-    public function __construct($options)
+    public function __construct(array $options)
     {
+        $options['_pattern'] = '<%s>';
+        $options['_attributes'] = array();
+        $options['_validators'] = array();    
+        $options['_decorators'] = array();        
         parent::__construct($options);
-        $this->__set('_pattern', '<%s>');
-        $this->__set('_attributes', array());
-        $this->__set('_validators', array());    
-        $this->__set('_decorators', array());
-    }
+    }       
     
     /**
      * Render the element itself

@@ -3,7 +3,8 @@
 namespace NG\Html\Elements\Skeletons;
 
 use NG\Prototypes\Interfaces as I,
-    NG\Prototypes\Abstracts as A;
+    NG\Prototypes\Abstracts as A,
+    NG\Types\TString as String;
 
 /**
  * Container html element with inner content
@@ -33,11 +34,11 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
      */
     public function __construct(array $options)
     {
+        $options['_pattern'] =  '<%s %s>%s</%s>';
+        $options['_selfClosed'] =  false;
+        $options['_content'] =  new String();
+        $options['_elements'] =  array();        
         parent::__construct($options);
-        $this->__set('_pattern', '<%s %s>%s</%s>');
-        $this->__set('_selfClosed', false);
-        $this->__set('_content', new Types\String());
-        $this->__set('_elements', array());
     }
     
     /**
@@ -48,6 +49,7 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
     public function addElement(I\HtmlElementInterface $element)
     {
         $elements = $this->__get('_elements');
+        $elements = is_array($elements)?$elements:array();
         array_push($elements, $element);
         $this->setElements($elements);
     }
@@ -79,10 +81,10 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
      */
     public function setContent($content)
     {
-        if ($content instanceof Types\String)
+        if ($content instanceof String)
             $this->__set('_content', $content);
         elseif (is_string($content))
-            $this->__set('_content', new Types\String($value));
+            $this->__set('_content', new String($value));
     }
     
     /**
@@ -115,9 +117,9 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
      * 
      * @return type php string
      */
-    public function value()
+    public function value($value = null)
     {
-        $content = new Types\String($this->getContent());
+        $content = new String($this->getContent());
         if ($content->length())
             return $this->getContent();
         else
