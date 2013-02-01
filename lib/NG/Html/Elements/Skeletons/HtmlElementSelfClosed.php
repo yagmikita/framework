@@ -16,7 +16,7 @@ class HtmlElementSelfClosed extends A\HtmlElementAbstract
      * 
      * @param array $options
      */    
-    public function __construct(array $options)
+    public function __construct(array $options = array())
     {
         $options['_pattern'] = '<%s %s>';
         $options['_selfClosed'] = true;
@@ -30,10 +30,13 @@ class HtmlElementSelfClosed extends A\HtmlElementAbstract
      */
     public function renderElement()
     {
-        return vsprintf($this->__get('_pattern'), array(
-            $this->__get('_name'),
-            $this->renderAttributes(),
-        ));
+        return vsprintf(
+            $this->__get('_pattern'),
+            array(
+                $this->__get('_name'),
+                $this->renderAttributes(),
+            )
+        );
     }
     
     /**

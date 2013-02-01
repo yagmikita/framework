@@ -6,7 +6,7 @@ use NG\Html\Elements\Skeletons as Skeletons;
 
 class Head extends Skeletons\HtmlElementContainer
 {
-    public function __construct(array $options)
+    public function __construct(array $options = array())
     {
         $options['_name'] = 'head';
         parent::__construct($options);

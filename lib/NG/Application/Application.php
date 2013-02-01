@@ -33,11 +33,13 @@ class Application extends stdClass
         foreach ($constants as $const) {
             define($const['name'], $const['value']);
         }
-        defined('DIRECTORY_SEPARATOR') or define('DIRECTORY_SEPARATOR', self::userOS() == 'mac' || self::userOS() == 'linux' ? '\/' : '\\');
-        defined('APP_PATH') or define('APP_PATH', __DIR__);
-        defined('ERROR_PARAM') || define('ERROR_PARAM', 'The parameter "%s" you are trying to access is not presenter in the class "%s".');
-        defined('APP_ENV') or define('APP_ENV', 'production');
-        defined('APP_UID') or define('APP_UID', uniqid('APP-', true)); 
+        defined('DIRECTORY_SEPARATOR') || 
+            define('DIRECTORY_SEPARATOR', self::userOS() == 'mac' || self::userOS() == 'linux' ? '\/' : '\\');
+        defined('APP_PATH') || define('APP_PATH', __DIR__);
+        defined('ERROR_PARAM') || 
+            define('ERROR_PARAM', 'The parameter "%s" you are trying to access is not presenter in the class "%s".');
+        defined('APP_ENV') || define('APP_ENV', 'production');
+        defined('APP_UID') || define('APP_UID', uniqid('APP-', true)); 
     }
     
     public function __construct(
@@ -84,11 +86,9 @@ class Application extends stdClass
         $os = strtolower(PHP_OS);
         if (preg_match('/linux/i', $os)) {
             $platform = 'linux';
-        }
-        elseif (preg_match('/macintosh|mac os x/i', $os)) {
+        } elseif (preg_match('/macintosh|mac os x/i', $os)) {
             $platform = 'mac';
-        }
-        elseif (preg_match('/windows|win32/i', $os)) {
+        } elseif (preg_match('/windows|win32/i', $os)) {
             $platform = 'windows';
         }
         return $platform;

@@ -23,25 +23,25 @@ class StandardAutoloader implements SplAutoloader
 {
     const NS_SEPARATOR     = '\\';
     const PREFIX_SEPARATOR = '_';
-    const LOAD_NS          = 'namespaces';
-    const LOAD_PREFIX      = 'prefixes';
+    const LOAD_NS          = '_namespaces';
+    const LOAD_PREFIX      = '_prefixes';
     const ACT_AS_FALLBACK  = 'fallback_autoloader';
     const AUTOREGISTER_ZF  = 'autoregister_zf';
 
     /**
      * @var array Namespace/directory pairs to search; ZF library added by default
      */
-    protected $namespaces = array();
+    protected $_namespaces = array();
 
     /**
      * @var array Prefix/directory pairs to search
      */
-    protected $prefixes = array();
+    protected $_prefixes = array();
 
     /**
      * @var bool Whether or not the autoloader should also act as a fallback autoloader
      */
-    protected $fallbackAutoloaderFlag = false;
+    protected $_fallbackAutoloaderFlag = false;
 
     /**
      * Constructor
@@ -62,11 +62,11 @@ class StandardAutoloader implements SplAutoloader
      * following structure:
      * <code>
      * array(
-     *     'namespaces' => array(
+     *     '_namespaces' => array(
      *         'Zend'     => '/path/to/Zend/library',
      *         'Doctrine' => '/path/to/Doctrine/library',
      *     ),
-     *     'prefixes' => array(
+     *     '_prefixes' => array(
      *         'Phly_'     => '/path/to/Phly/library',
      *     ),
      *     'fallback_autoloader' => true,
@@ -119,7 +119,7 @@ class StandardAutoloader implements SplAutoloader
      */
     public function setFallbackAutoloader($flag)
     {
-        $this->fallbackAutoloaderFlag = (bool) $flag;
+        $this->_fallbackAutoloaderFlag = (bool) $flag;
         return $this;
     }
 
@@ -130,7 +130,7 @@ class StandardAutoloader implements SplAutoloader
      */
     public function isFallbackAutoloader()
     {
-        return $this->fallbackAutoloaderFlag;
+        return $this->_fallbackAutoloaderFlag;
     }
 
     /**
@@ -143,25 +143,25 @@ class StandardAutoloader implements SplAutoloader
     public function registerNamespace($namespace, $directory)
     {
         $namespace = rtrim($namespace, self::NS_SEPARATOR) . self::NS_SEPARATOR;
-        $this->namespaces[$namespace] = $this->normalizeDirectory($directory);
+        $this->_namespaces[$namespace] = $this->normalizeDirectory($directory);
         return $this;
     }
 
     /**
      * Register many namespace/directory pairs at once
      *
-     * @param  array $namespaces
+     * @param  array $_namespaces
      * @throws Exception\InvalidArgumentException
      * @return StandardAutoloader
      */
-    public function registerNamespaces($namespaces)
+    public function registerNamespaces($_namespaces)
     {
-        if (!is_array($namespaces) && !$namespaces instanceof \Traversable) {
+        if (!is_array($_namespaces) && !$_namespaces instanceof \Traversable) {
             require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Exception\InvalidArgumentException('Namespace pairs must be either an array or Traversable');
         }
 
-        foreach ($namespaces as $namespace => $directory) {
+        foreach ($_namespaces as $namespace => $directory) {
             $this->registerNamespace($namespace, $directory);
         }
         return $this;
@@ -177,25 +177,25 @@ class StandardAutoloader implements SplAutoloader
     public function registerPrefix($prefix, $directory)
     {
         $prefix = rtrim($prefix, self::PREFIX_SEPARATOR). self::PREFIX_SEPARATOR;
-        $this->prefixes[$prefix] = $this->normalizeDirectory($directory);
+        $this->_prefixes[$prefix] = $this->normalizeDirectory($directory);
         return $this;
     }
 
     /**
      * Register many namespace/directory pairs at once
      *
-     * @param  array $prefixes
+     * @param  array $_prefixes
      * @throws Exception\InvalidArgumentException
      * @return StandardAutoloader
      */
-    public function registerPrefixes($prefixes)
+    public function registerPrefixes($_prefixes)
     {
-        if (!is_array($prefixes) && !$prefixes instanceof \Traversable) {
+        if (!is_array($_prefixes) && !$_prefixes instanceof \Traversable) {
             require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Exception\InvalidArgumentException('Prefix pairs must be either an array or Traversable');
         }
 
-        foreach ($prefixes as $prefix => $directory) {
+        foreach ($_prefixes as $prefix => $directory) {
             $this->registerPrefix($prefix, $directory);
         }
         return $this;

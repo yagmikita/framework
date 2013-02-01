@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Types;
+namespace NG\Tests\Types;
 
-use Tests,
-    Types as TE,
-    Application\Exceptions;
+use NG\Tests,
+    NG\Types as TE,
+    NG\Application\Exceptions;
 
-class TStringTest extends Tests\TestCase
+class TStringTest extends NG\Tests\TestCase
 {
     public $string;
     

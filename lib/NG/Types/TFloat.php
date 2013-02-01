@@ -7,7 +7,7 @@ use NG\Prototypes\Abstracts as A,
     NG\Application\Exceptions as E;
 
 class TFloat extends A\TypeAbstract
-{   
+{
     public function __construct($value)
     {
         parent::__construct($value, 0);

@@ -27,5 +27,15 @@ use NG\Prototypes\Interfaces as I;
  */
 abstract class UIDecoratorAbstract extends I\DecoratorInterface
 {
+    /**
+     * Defines the decoration mode
+     * @var enum(before|wrap|after)
+     */
+    protected $_mode;
+    
+    /**
+     * Defines the parretn for the decorator to be rendered with
+     * @var string
+     */
     protected $_pattern;
 }

@@ -10,7 +10,7 @@ use NG\Prototypes\Abstracts as A,
  * Implementation of Array class, which is the wrapper of a casual array type
  */
 class TArray extends A\TypeAbstract implements I\HasLengthInterface,  \Iterator
-{   
+{
     protected $_position;
     
     public function __construct($value = null)

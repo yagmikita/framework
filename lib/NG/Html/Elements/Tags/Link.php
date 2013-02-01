@@ -6,7 +6,7 @@ use NG\Html\Elements\Skeletons as Skeletons;
 
 class Link extends Skeletons\HtmlElementSelfClosed
 {
-    public function __construct(array $options)
+    public function __construct(array $options = array())
     {
         $options['_name'] = 'link';
         $options['_defaultAttributes'] = array(

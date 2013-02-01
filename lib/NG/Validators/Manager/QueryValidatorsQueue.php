@@ -54,7 +54,7 @@ class QueryValidatorsQueue
             if (!$composer->validate($value)) {
                 $vn = $initialized->getFullyQualifiedValidatorName();
                 $errors = $this->__get('_errors');
-                array_push($errors, $vn::$MSG_INVALID_VALUE);
+                array_push($errors, $vn::$msgInvalidValue);
                 $this->__set('_errors', $errors);
             }
         }

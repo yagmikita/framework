@@ -6,11 +6,14 @@ use NG\Html\Elements\Skeletons as Skeletons;
 
 class Script extends Skeletons\HtmlElementContainer
 {
-    public function __construct(array $options)
+    public function __construct(array $options = array())
     {
         $options['_name'] = 'script';
-        $options['_defaultAttributes'] = array(
-            'type' => 'text/javascript'
+        $this->__set(
+            '_defaultAttributes',
+            array(
+                'type' => 'text/javascript'
+            )
         );        
         parent::__construct($options);
     }       

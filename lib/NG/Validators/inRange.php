@@ -12,7 +12,9 @@ class inRange extends A\Validator
     public function validate($value)
     {
         $value   = TE\String($value);
-        $range = is_array($this->__get('_params')['range'])?$this->__get('_params')['range']:array($this->__get('_params')['range']);
+        $range =    is_array($this->__get('_params')['range']) ? 
+                    $this->__get('_params')['range'] : 
+                    array($this->__get('_params')['range']);
         return in_array($value, $range);
     }
     

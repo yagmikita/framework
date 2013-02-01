@@ -32,7 +32,7 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
      * 
      * @param array $options
      */
-    public function __construct(array $options)
+    public function __construct(array $options = array())
     {
         $options['_pattern'] =  '<%s %s>%s</%s>';
         $options['_selfClosed'] =  false;
@@ -106,7 +106,10 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
     public function renderElements()
     {
         $content = '';
-        foreach ($this->__get('_elements') as $element){
+        $elements = $this->__get('_elements');
+        if (!count($elements))
+            return $content;
+        foreach ($elements as $element) {
             $content .= $element->render();
         }
         return $content;
@@ -143,12 +146,15 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
      */
     public function renderElement()
     {
-        return vsprintf($this->__get('_pattern'), array(
-            $this->__get('_name'),
-            $this->renderAttributes(),
-            $this->renderElements(),
-            $this->__get('_name'),
-        ));
+        return vsprintf(
+            $this->__get('_pattern'),
+            array(
+                $this->__get('_name'),
+                $this->renderAttributes(),
+                $this->renderElements(),
+                $this->__get('_name'),
+            )
+        );
     }
     
 }

@@ -6,5 +6,5 @@ use NG\Types as TE;
 
 interface DecoratorInterface
 {
-    public function decorate(TE\String $poition);
+    public function decorate();
 }

@@ -26,7 +26,7 @@ use NG\Prototypes\Abstracts as A,
  * @license  GNU GPL
  * @link     http://192.168.7.101/docs/decorators/ui/form/
  */
-class Form extends A\UIDecorator
+class Form extends A\UIDecoratorAbstract
 {
     /**
      * Decorators constructor

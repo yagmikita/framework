@@ -8,7 +8,7 @@ class DoctypeHtml5 extends Skeletons\HtmlElementSelfClosed
 {
     protected $_name = '!DOCTYPE html';
     
-    public function __construct(array $options)
+    public function __construct(array $options = array())
     {
         $options['_pattern'] = '<%s>';
         $options['_attributes'] = array();
@@ -24,9 +24,12 @@ class DoctypeHtml5 extends Skeletons\HtmlElementSelfClosed
      */
     public function renderElement()
     {
-        return vsprintf($this->__get('_pattern'), array(
-            $this->__get('_name')
-        ));
+        return vsprintf(
+            $this->__get('_pattern'),
+            array(
+                $this->__get('_name')
+            )
+        );
     }
     
     /**

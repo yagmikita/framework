@@ -27,7 +27,8 @@ abstract class TypeAbstract implements I\HasValueInterface, \JsonSerializable, I
             throw new E\TypeException(self::ERROR_TYPE, 500);
     }
     
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return $this->value();
     }
     

@@ -10,7 +10,7 @@ abstract class ValidatorAbstract implements I\ValidatorInterface
 {
     use T\magicGet, T\magicSet;
     
-    public static $MSG_INVALID_VALUE;
+    public static $msgInvalidValue;
         
     protected $_params;
     
@@ -21,14 +21,14 @@ abstract class ValidatorAbstract implements I\ValidatorInterface
         $this->__set('_params', $params);
         $msg = new TE\String($errorMsg);
         if ($msg->length())
-            self::$MSG_INVALID_VALUE = $msg->value();
+            self::$msgInvalidValue = $msg->value();
         else
-            self::$MSG_INVALID_VALUE = $this->renderError();       
+            self::$msgInvalidValue = $this->renderError();       
     }
     
     public function getError()
     {
-        return self::$MSG_INVALID_VALUE;
+        return self::$msgInvalidValue;
     }
     
 }

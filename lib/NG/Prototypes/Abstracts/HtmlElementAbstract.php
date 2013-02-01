@@ -22,14 +22,14 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
      * The name of the Element
      * * - required
      * 
-     * @var type php string
+     * @var string
      */
     protected $_name;   
     
     /**
      * Thre set of attributes to use if no attributes are set, but defaults exist
      * 
-     * @var type php array
+     * @var array
      */
     protected $_defaultAttributes = array();
     
@@ -37,7 +37,7 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
      * Represents the string pattern to be rendered by Prototypes\Interfaces\Renderable
      * * - required
      * 
-     * @var type php string
+     * @var string
      */
     protected $_pattern;
     
@@ -45,36 +45,36 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
      * Represents the array of html tag attributes
      * * - required
      * 
-     * @var type php array
+     * @var array
      */
-    protected $_attributes;
+    protected $_attributes = array();
     
     /**
      * This flag indicates, whether the tag is self-closed
      * * - required
      * 
-     * @var type 
+     * @var bool 
      */
     protected $_selfClosed;   
     
     /**
      * The decorator object of the element
      * 
-     * @var type Prototypes\Interfaces\Decorator
+     * @var Prototypes\Interfaces\Decorator
      */    
-    protected $_decorators;
+    protected $_decorators = null;
     
     /**
      * The validator object of the element
      * 
-     * @var type Prototypes\Interfaces\Decorator
+     * @var Prototypes\Interfaces\Decorator
      */    
-    protected $_validators;
+    protected $_validators = null;
     
     /**
      * Holds the last validation error list
      * 
-     * @var type array
+     * @var array
      */
     protected $_validationErrors = array();
     
@@ -83,11 +83,12 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
      * @param array $options
      * @throws error\InvalidOptionsException
      */
-    public function __construct(array $options)
+    public function __construct(array $options = array())
     {
+        $this->__set('_defaultAttributes', is_null($this->_defaultAttributes)?array():$this->_defaultAttributes);
         $attributes = isset($options['_attributes'])?$options['_attributes']:$this->__get('_defaultAttributes');
-        $decorators  = isset($options['_decorators'])?$options['_decorators']:null;
-        $validators  = isset($options['_validators'])?$options['_validators']:null;   
+        $decorators  = isset($options['_decorators'])?$options['_decorators']:$this->__get('_decorators');
+        $validators  = isset($options['_validators'])?$options['_validators']:$this->__get('_validators');   
         $options['_attributes'] = $attributes;
         $options['_decorators'] = $decorators;
         $options['_validators'] = $validators;
@@ -102,9 +103,9 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
     }
     
     public static function areOptionsValid(array $a)
-    {
+    {//var_dump($a);
         if (isset($a['_name'])&&isset($a['_selfClosed'])&&isset($a['_pattern'])) {
-            if (count($a['_attributes']))
+            if (is_array($a['_attributes']))
                 return true;
             else
                 return false;
@@ -169,8 +170,9 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
     
     public function applyDecorations($content)
     {
-        if (!count($this->__get('_decorators')))
+        if (!count($this->__get('_decorators'))) {
             return $content;
+        }
         foreach ($this->__get('_decorators') as $decorator) {
             $content = $decorator->decorate($content);
         }
@@ -180,7 +182,7 @@ abstract class HtmlElementAbstract implements I\HtmlElementInterface
     public function renderAttributes()
     {
         $attrs = "";
-        foreach ($this->__get('_attributes') as $key => $value){
+        foreach ($this->__get('_attributes') as $key => $value) {
             $attrs .= "{$key}='{$value}' ";
         }
         return $attrs;
