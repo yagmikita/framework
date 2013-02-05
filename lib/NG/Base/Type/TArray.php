@@ -2,14 +2,14 @@
 
 namespace NG\Types;
 
-use NG\Prototypes\Abstracts as A,        
-    NG\Prototypes\Interfaces as I,
-    NG\Application\Exceptions as E;
+use NG\Prototypes\Abstracts,        
+    NG\Prototypes\Interfaces,
+    NG\Application\Exceptions;
 
 /**
  * Implementation of Array class, which is the wrapper of a casual array type
  */
-class TArray extends A\TypeAbstract implements I\HasLengthInterface,  \Iterator
+class TArray extends TypeAbstract implements HasLengthInterface,  \Iterator
 {
     protected $_position;
     

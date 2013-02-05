@@ -2,7 +2,7 @@
 
 namespace NG\Traits;
 
-use NG\Application\Exceptions as E;
+use NG\Base\Exceptions;
 
 trait magicSet {
     public function __set($key, $value)
@@ -13,7 +13,7 @@ trait magicSet {
         if (property_exists($this, $key)) {
             $this->$key = $value;
         } else {
-            throw new E\Http500Exception(sprintf(ERROR_PARAM, $key, get_class($this)));
+            throw new Http500Exception(sprintf(ERROR_PARAM, $key, get_class($this)));
         }
     }
 }

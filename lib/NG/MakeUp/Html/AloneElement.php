@@ -1,15 +1,15 @@
 <?php
 
-namespace NG\Html\Elements\Skeletons;
+namespace NG\MakeUp\Html;
 
-use NG\Prototypes\Abstracts as A;
+use NG\Base\Abstracts;
 
 /**
  * Self-closed html element with has no inner content
  * 
  * @author Gopkalo Nikita <yagmikita@gmail.com>
  */
-class HtmlElementSelfClosed extends A\HtmlElementAbstract
+class AloneElement extends HtmlElementAbstract
 {
     /**
      * Public constructor - overrides the abstract constructor

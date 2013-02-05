@@ -1,17 +1,17 @@
 <?php
 
-namespace NG\Html\Elements\Skeletons;
+namespace NG\MakeUp\Html;
 
-use NG\Prototypes\Interfaces as I,
-    NG\Prototypes\Abstracts as A,
-    NG\Types\TString as String;
+use NG\Base\Interfaces,
+    NG\Base\Abstracts,
+    NG\Base\Types\TString as String;
 
 /**
  * Container html element with inner content
  * 
  * @author Gopkalo Nikita <yagmikita@gmail.com>
  */
-class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContentInterface
+class ContainerElement extends HtmlElementAbstract implements HasContentInterface
 {
     /**
      * The inner plain text content of the element
@@ -44,9 +44,9 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
     /**
      * Add the HtmlElementInterface element the the end of the elements list
      * 
-     * @param \Prototypes\Interfaces\HtmlElementInterface $element
+     * @param \NG\Base\Interfaces\HtmlElementInterface $element
      */
-    public function addElement(I\HtmlElementInterface $element)
+    public function addElement(HtmlElementInterface $element)
     {
         $elements = $this->__get('_elements');
         $elements = is_array($elements)?$elements:array();
@@ -90,7 +90,7 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
     /**
      * Gets the inner content (html chunk) of the element
      * 
-     * @return type php string
+     * @return string
      */
     public function getContent()
     {
@@ -101,7 +101,7 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
      * Renders all included elements which form
      * the inner content of the current element
      * 
-     * @return type php string
+     * @return string
      */
     public function renderElements()
     {
@@ -118,7 +118,7 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
     /**
      * Gets the inner content of the element
      * 
-     * @return type php string
+     * @return string
      */
     public function value($value = null)
     {
@@ -132,7 +132,7 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
     /**
      * Symlink to a $this->value() method
      * 
-     * @return type php string
+     * @return string
      */
     public function innerHTML()
     {
@@ -142,7 +142,7 @@ class HtmlElementContainer extends A\HtmlElementAbstract implements I\HasContent
     /**
      * Renders the element itself using $this->_pattern template
      * 
-     * @return type php string
+     * @return string
      */
     public function renderElement()
     {
