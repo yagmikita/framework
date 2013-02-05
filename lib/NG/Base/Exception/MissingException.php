@@ -1,8 +1,8 @@
 <?php
 
-namespace NG\Application\Exceptions;
+namespace NG\Base\Exception;
 
-class Http404Exception extends Exception
+class MissingException extends Exception
 {
     public function __construct($message)
     {

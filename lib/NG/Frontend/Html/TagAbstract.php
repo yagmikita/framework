@@ -1,17 +1,16 @@
 <?php
 
-namespace NG\Prototypes\Abstracts;
+namespace NG\Frontend\Html;
 
-use NG\Traits as T,
-    NG\Prototypes\Interfaces as I,
-    NG\Application\Exceptions as E,
-    NG\Validators\Manager\QueryValidatorsQueue;
+use NG\Base\Traits,
+    NG\Base\Interfaces,
+    NG\Validator\Manager\QueryValidatorsQueue;
 
-abstract class HtmlElementAbstract implements I\HtmlElementInterface
+abstract class TagAbstract implements FrontendElementInterface
 {
-    use T\magicGet, T\magicSet,
-        T\setValidator, T\getValidator, T\hasValidator,
-        T\setDecorator, T\getDecorator, T\hasDecorator;
+    use magicGet, magicSet,
+        setValidator, getValidator, hasValidator,
+        setDecorator, getDecorator, hasDecorator;
 
     /**
      * Error messages

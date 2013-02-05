@@ -1,17 +1,15 @@
 <?php
 
-namespace NG\MakeUp\Html;
+namespace NG\Frontend\Html;
 
-use NG\Base\Interfaces,
-    NG\Base\Abstracts,
-    NG\Base\Types\TString as String;
+use NG\Base\Types\TString as String;
 
 /**
  * Container html element with inner content
  * 
  * @author Gopkalo Nikita <yagmikita@gmail.com>
  */
-class ContainerElement extends HtmlElementAbstract implements HasContentInterface
+class TagContainer extends TagAbstract implements ElementsCollectionInterface
 {
     /**
      * The inner plain text content of the element

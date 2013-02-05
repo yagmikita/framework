@@ -1,8 +1,8 @@
 <?php
 
-namespace NG\Application\Exceptions;
+namespace NG\Base\Exception;
 
-class Http500Exception extends \Exception
+class CodeException extends Exception
 {
     public function __construct($message)
     {

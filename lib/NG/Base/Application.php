@@ -1,13 +1,13 @@
 <?php
 
-namespace NG\Application;
+namespace NG\Base;
 
-use NG\Application\Exceptions As E,
-    NG\Traits as T;
+use NG\Base\Exceptions,
+    NG\Base\Traits;
 
 class Application extends stdClass
 {
-    use T\magicGet, T\magicSet;
+    use magicGet, magicSet;
     
     /**
      * array of application configs, converted to stdClass
@@ -28,6 +28,14 @@ class Application extends stdClass
     protected $_request;
     protected $_response;
     
+    public function __construct(\Request $request, array $constants)
+    {
+        self::constants($constants);
+        $this->configure($this->getConfigs());
+        $this->__set('_request', $request);
+        $this->__get('_request')->dispatchRequest();
+    }
+    
     public static function constants(array $constants)
     {
         foreach ($constants as $const) {
@@ -35,22 +43,11 @@ class Application extends stdClass
         }
         defined('DIRECTORY_SEPARATOR') || 
             define('DIRECTORY_SEPARATOR', self::userOS() == 'mac' || self::userOS() == 'linux' ? '\/' : '\\');
-        defined('APP_PATH') || define('APP_PATH', __DIR__);
+        defined('APP_PATH') || define('APP_PATH', realpath(__DIR__.'/../../../'));
         defined('ERROR_PARAM') || 
             define('ERROR_PARAM', 'The parameter "%s" you are trying to access is not presenter in the class "%s".');
         defined('APP_ENV') || define('APP_ENV', 'production');
         defined('APP_UID') || define('APP_UID', uniqid('APP-', true)); 
-    }
-    
-    public function __construct(
-        \Request $request,
-        array $constants
-    )
-    {
-        self::constants($constants);
-        $this->configure($this->getConfigs());
-        $this->__set('_request', $request);
-        $this->__get('_request')->dispatchRequest();
     }
     
     protected function getConfigs()
