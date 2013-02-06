@@ -1,8 +1,9 @@
 <?php
 
-namespace NG\Trait;
+namespace NG\Base\Traits;
 
-trait validator {
+trait validator
+{
     public function validator()
     {
         $this->__get('_validator');

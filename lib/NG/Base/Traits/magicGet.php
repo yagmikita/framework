@@ -1,10 +1,11 @@
 <?php
 
-namespace NG\Traits;
+namespace NG\Base\Traits;
 
 use NG\Base\Exceptions;
 
-trait magicGet {
+trait magicGet
+{
     public function __get($key)
     {
         if (DEBUG_MODE) {
@@ -13,6 +14,6 @@ trait magicGet {
         if (property_exists($this, $key)) {
             return $this->$key;
         }
-        throw new Http500Exception(sprintf(ERROR_PARAM, $key, get_class($this)));
+        throw new CodeException(sprintf('Variable "%s" does not exist in class "%s".', $key, get_class($this)));
     }
 }

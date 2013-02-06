@@ -1,8 +1,9 @@
 <?php
 
-namespace NG\Trait;
+namespace NG\Base\Traits;
 
-trait decorator {
+trait decorator
+{
     public function decorator()
     {
         return $this->__get('_decorator');

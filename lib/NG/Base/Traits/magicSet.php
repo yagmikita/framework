@@ -4,7 +4,8 @@ namespace NG\Traits;
 
 use NG\Base\Exceptions;
 
-trait magicSet {
+trait magicSet
+{
     public function __set($key, $value)
     {
         if (DEBUG_MODE) {
@@ -13,7 +14,7 @@ trait magicSet {
         if (property_exists($this, $key)) {
             $this->$key = $value;
         } else {
-            throw new Http500Exception(sprintf(ERROR_PARAM, $key, get_class($this)));
+            throw new CodeException(sprintf('Variable "%s" does not exist in class "%s".', $key, get_class($this)));
         }
     }
 }
