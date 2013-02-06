@@ -4,7 +4,7 @@ namespace NG\Base\Traits;
 
 use NG\Decorator;
 
-trait setDecorator
+trait SetDecorator
 {
     public function setDecorator(DecoratorInterface $decorator)
     {

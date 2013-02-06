@@ -4,7 +4,7 @@ namespace NG\Base\Traits;
 
 use NG\Validator;
 
-trait setValidator
+trait SetValidator
 {
     public function setValidator(ValidatorInterface $validator)
     {

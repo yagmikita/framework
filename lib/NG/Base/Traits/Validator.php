@@ -2,7 +2,7 @@
 
 namespace NG\Base\Traits;
 
-trait validator
+trait Validator
 {
     public function validator()
     {

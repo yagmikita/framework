@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Base\Interfaces;
+namespace NG\Frontend;
 
 /**
  * Sets the basic behavior for all frontend elements

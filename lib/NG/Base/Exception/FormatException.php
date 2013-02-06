@@ -1,11 +1,12 @@
 <?php
 
-namespace NG\Base\Exception;
+namespace NG\Base\Exceptions;
 
 class FormatException extends Exception
 {
-    public function __construct($message = 'Wrong format provided')
+    public function __construct($class, $method, $message = 'wrong format provided', $code = 501)
     {
-        parent::__construct($message, 501);
+        parent::__construct($class, $method, $message, $code);
     }
+    
 }

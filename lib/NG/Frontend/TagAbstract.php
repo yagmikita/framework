@@ -2,8 +2,8 @@
 
 namespace NG\Frontend\Html;
 
-use NG\Base\Traits,
-    NG\Base\Interfaces,
+use NG\Frontend\Traits,
+    NG\Frontend\Interfaces,
     NG\Validator\Manager\QueryValidatorsQueue;
 
 abstract class TagAbstract implements FrontendElementInterface
@@ -15,7 +15,7 @@ abstract class TagAbstract implements FrontendElementInterface
     /**
      * Error messages
      */
-    const ERROR_INVALID_OPTIONS = "The options are in the invalid format. Check the requirements.";
+    protected static $_errorMessage = "The options are in the invalid format. Check the requirements.";
     
     /**
      * The name of the Element

@@ -3,28 +3,25 @@
 namespace NG\Prototypes\Abstracts;
 
 use NG\Traits as T,
-    NG\Prototypes\Interfaces as I,
-    NG\Application\Exceptions as E;
+    NG\Prototypes\Interfaces,
+    NG\Application\Exceptions;
 
-abstract class TypeAbstract implements I\HasValueInterface, \JsonSerializable, I\CanValidTypeInterface
+class RootType implements ValueInterface, JsonSerializable, CanValidTypeInterface
 {
     const ERROR_TYPE = "The value is not of a valid type";
     
-    use T\magicGet, T\magicSet, T\value;
+    use MagicGet, MagicSet, Value;
     
     protected $_value;
         
-    public function __construct(
-        $value,
-        $initial
-    )
+    public function __construct($value, $initial)
     {
         if (is_null($value))
             $this->__set('_value', $initial);
         elseif ($this->isValidType($value))
             $this->__set('_value', $value);
         else
-            throw new E\TypeException(self::ERROR_TYPE, 500);
+            throw new TypeException(self::ERROR_TYPE, 500);
     }
     
     public function jsonSerialize()

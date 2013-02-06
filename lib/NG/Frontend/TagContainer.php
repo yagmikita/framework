@@ -9,21 +9,21 @@ use NG\Base\Types\TString as String;
  * 
  * @author Gopkalo Nikita <yagmikita@gmail.com>
  */
-class TagContainer extends TagAbstract implements ElementsCollectionInterface
+class TagContainer extends TagAbstract implements ElementsCollectionInterface, ContentInterface
 {
     /**
      * The inner plain text content of the element
      * 
      * @var type Types\String
      */
-    protected $_content;
+    protected $_content = '';
     
     /**
      * If content if not defined, then the list of elements is being rendered
      * 
      * @var type 
      */
-    protected $_elements;
+    protected $_elements = array();
     
     /**
      * Public constructor - overrides the abstract constructor
@@ -33,9 +33,7 @@ class TagContainer extends TagAbstract implements ElementsCollectionInterface
     public function __construct(array $options = array())
     {
         $options['_pattern'] =  '<%s %s>%s</%s>';
-        $options['_selfClosed'] =  false;
-        $options['_content'] =  new String();
-        $options['_elements'] =  array();        
+        $options['_selfClosed'] =  false;    
         parent::__construct($options);
     }
     
@@ -44,7 +42,7 @@ class TagContainer extends TagAbstract implements ElementsCollectionInterface
      * 
      * @param \NG\Base\Interfaces\HtmlElementInterface $element
      */
-    public function addElement(HtmlElementInterface $element)
+    public function addElement($element)
     {
         $elements = $this->__get('_elements');
         $elements = is_array($elements)?$elements:array();
@@ -79,10 +77,9 @@ class TagContainer extends TagAbstract implements ElementsCollectionInterface
      */
     public function setContent($content)
     {
-        if ($content instanceof String)
-            $this->__set('_content', $content);
-        elseif (is_string($content))
-            $this->__set('_content', new String($value));
+        if (!is_string($content))
+            $content = (string)$content;
+        $this->__set('_content', $content);
     }
     
     /**
@@ -92,7 +89,7 @@ class TagContainer extends TagAbstract implements ElementsCollectionInterface
      */
     public function getContent()
     {
-        return $this->__get('_content')->value();
+        return $this->__get('_content');
     }
     
     /**

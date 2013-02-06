@@ -1,11 +1,12 @@
 <?php
 
-namespace NG\Base\Exception;
+namespace NG\Base\Exceptions;
 
 class MissingException extends Exception
 {
-    public function __construct($message = 'Resource is not found')
+    public function __construct($class, $method, $message = 'resource is not found', $code = 404)
     {
-        parent::__construct($message, 404);
+        parent::__construct($class, $method, $message, $code);
     }
+    
 }

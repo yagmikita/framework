@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Base\Interfaces;
+namespace NG\Frontend;
 
 /**
  * Indicates, whether some class has content

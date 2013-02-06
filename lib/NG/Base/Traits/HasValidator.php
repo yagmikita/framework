@@ -4,7 +4,7 @@ namespace NG\Base\Traits;
 
 use NG\Validator;
 
-trait hasValidator
+trait HasValidator
 {
     public function hasValidator()
     {

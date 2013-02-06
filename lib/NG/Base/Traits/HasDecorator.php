@@ -4,7 +4,7 @@ namespace NG\Base\Traits;
 
 use NG\Decorator;
 
-trait hasDecorator
+trait HasDecorator
 {
     public function hasDecorator()
     {

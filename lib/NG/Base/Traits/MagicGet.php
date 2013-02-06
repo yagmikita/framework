@@ -4,7 +4,7 @@ namespace NG\Base\Traits;
 
 use NG\Base\Exceptions;
 
-trait magicGet
+trait MagicGet
 {
     public function __get($key)
     {

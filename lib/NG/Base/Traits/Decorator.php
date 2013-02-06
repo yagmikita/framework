@@ -2,7 +2,7 @@
 
 namespace NG\Base\Traits;
 
-trait decorator
+trait Decorator
 {
     public function decorator()
     {

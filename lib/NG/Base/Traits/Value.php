@@ -2,7 +2,7 @@
 
 namespace NG\Base\Traits;
 
-trait value
+trait Value
 {
     public function value()
     {

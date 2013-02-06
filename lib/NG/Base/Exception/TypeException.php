@@ -1,11 +1,12 @@
 <?php
 
-namespace NG\Base\Exception;
+namespace NG\Base\Exceptions;
 
 class TypeException extends Exception
 {
-    public function __construct($message = 'Type missmatch')
+    public function __construct($class, $method, $message = 'Type missmatch', $code = 502)
     {
-        parent::__construct($message, 502);
+        parent::__construct($class, $method, $message, $code);
     }
+    
 }

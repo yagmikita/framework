@@ -4,7 +4,7 @@ namespace NG\Traits;
 
 use NG\Base\Exceptions;
 
-trait magicSet
+trait MagicSet
 {
     public function __set($key, $value)
     {

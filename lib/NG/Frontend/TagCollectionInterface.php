@@ -1,11 +1,11 @@
 <?php
 
-namespace NG\Base\Interfaces;
+namespace NG\Frontend;
 
 /**
  * Indicates if some class could have the set of elements
  */
-interface ElementsCollectionInterface
+interface TagsCollectionInterface extends Iterator
 {
     /**
      * @param array $elements
