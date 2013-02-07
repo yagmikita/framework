@@ -34,5 +34,5 @@ interface DecoratorsCollectionInterface
      * Luanches the decoration chain
      * @return mixed
      */
-    public function decorate();
+    public function decorate($smth);
 }

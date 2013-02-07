@@ -1,23 +1,20 @@
 <?php
 
-namespace NG\Prototypes\Abstracts;
+namespace NG\Decorator;
 
-use NG\Traits as T,
-    NG\Prototypes\Interfaces as I,
-    NG\Application\Exceptions\TypeException as TypeException;
+use NG\Root\Prototype,
+    NG\Root\Exception;
 
-abstract class DecoratorAbstract implements I\DecoratorInterface
+abstract class DecoratorAbstract extends RootClass implements DecoratorInterface
 {
-    use T\magicGet, T\magicSet;
-    
     /**
      * The decoration that will be rendered to decorat the 'target'
-     * @var I\RenderableInterface || string
+     * @var RenderableInterface || string
      */
     protected $_decoration;
     /**
      * The object that is going to be decorated
-     * @var I\HasDecoratorsInterface 
+     * @var HasDecoratorsInterface 
      */
     protected $_target;
     /**
@@ -37,7 +34,7 @@ abstract class DecoratorAbstract implements I\DecoratorInterface
     {
         $permittedModes = array('before', 'wrap', 'after');
         if (!in_array($mode, $permittedModes))
-            throw new TypeException('Mode must be the member of the String rowset = [before, wrap, after]');
+            throw new TypeException(__CLASS__, __METHOD__);
         $this->__set('_mode', $mode);
     }
     
@@ -48,10 +45,10 @@ abstract class DecoratorAbstract implements I\DecoratorInterface
     
     public function setDecoration($decoration)
     {
-        if (!(($decoration instanceof I\RenderableInterface) || is_string($decoration)))
-            throw new TypeException('Wrong decorational pattern type'); 
+        if (!(($decoration instanceof RenderableInterface) || is_string($decoration)))
+            throw new TypeException(__CLASS__, __METHOD__); 
         if (!$this->isDecorationValid())
-            throw new FormatException('Wrong decoration string format. String {target} template must be presented');
+            throw new FormatException(__CLASS__, __METHOD__);
         $this->__set('_decoration', $decoration);
     }
     
@@ -60,7 +57,7 @@ abstract class DecoratorAbstract implements I\DecoratorInterface
         return $this->__get('_decoration');
     }
     
-    public function setTarget(I\HasDecoratorsInterface $target)
+    public function setTarget($target)
     {
         $this->__set('_target', $target);
     }
