@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Base\Traits;
+namespace NG\Root\Traits;
 
 trait Value
 {

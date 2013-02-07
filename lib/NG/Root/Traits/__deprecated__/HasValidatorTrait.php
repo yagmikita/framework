@@ -1,10 +1,10 @@
 <?php
 
-namespace NG\Base\Traits;
+namespace NG\Root\Traits;
 
 use NG\Validator;
 
-trait HasValidator
+trait HasValidatorTrait
 {
     public function hasValidator()
     {

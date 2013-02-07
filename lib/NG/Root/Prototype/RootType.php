@@ -1,10 +1,10 @@
 <?php
 
-namespace NG\Prototypes\Abstracts;
+namespace NG\Root\Prototypes;
 
-use NG\Traits as T,
-    NG\Prototypes\Interfaces,
-    NG\Application\Exceptions;
+use NG\Root\Traits,
+    NG\Root\Exception,
+    NG\Root\Interfaces;
 
 class RootType implements ValueInterface, JsonSerializable, CanValidTypeInterface
 {

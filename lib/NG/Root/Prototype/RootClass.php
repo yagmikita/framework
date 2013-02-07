@@ -1,15 +1,15 @@
 <?php
 
-namespace NG\Base\Abstracts;
+namespace NG\Root\Prototype;
 
-use NG\Base\Traits,
-    NG\Base\Resource,
-    NG\Base\Interfaces,
-    NG\Base\Exceptions;
+use NG\Root\Traits,
+    NG\Root\Record,
+    NG\Root\Exception,
+    NG\Root\Interfaces;
 
-abstract class BaseAbstract extends stdClass implements ErrorContainerInterface, ResourceInterface
+class RootClass extends stdClass implements ErrorContainerInterface, ResourceInterface
 {
-    use magicGet, magicSet;
+    use MagicGetTrait, MagicSetTrait;
     
     /**
      * @var array

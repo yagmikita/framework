@@ -1,10 +1,10 @@
 <?php
 
-namespace NG\Base\Traits;
+namespace NG\Root\Traits;
 
 use NG\Decorator;
 
-trait SetDecorator
+trait SetDecoratorTrait
 {
     public function setDecorator(DecoratorInterface $decorator)
     {

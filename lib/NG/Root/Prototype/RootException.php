@@ -1,10 +1,10 @@
 <?php
 
-namespace NG\Base\Exceptions;
+namespace NG\Root\Prototype;
 
 class RootException extends Exception
 {
-    use magicGet, magicSet;
+    use MagicGetTrait, MagicSetTrait;
     
     protected $_message;
     

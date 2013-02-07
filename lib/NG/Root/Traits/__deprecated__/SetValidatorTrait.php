@@ -1,10 +1,10 @@
 <?php
 
-namespace NG\Base\Traits;
+namespace NG\Root\Traits;
 
 use NG\Validator;
 
-trait SetValidator
+trait SetValidatorTrait
 {
     public function setValidator(ValidatorInterface $validator)
     {

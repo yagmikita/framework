@@ -1,8 +1,10 @@
 <?php
 
-namespace NG\Base\Exceptions;
+namespace NG\Root\Exception;
 
-class TypeException extends Exception
+use NG\Root\Prorotype;
+
+class TypeException extends RootException
 {
     public function __construct($class, $method, $message = 'Type missmatch', $code = 502)
     {

@@ -1,8 +1,10 @@
 <?php
 
-namespace NG\Base\Exceptions;
+namespace NG\Root\Exception;
 
-class CodeException extends BaseException
+use NG\Root\Prorotype;
+
+class CodeException extends RootException
 {
     public function __construct($class, $method, $message = 'source code execution fails', $code = 500)
     {

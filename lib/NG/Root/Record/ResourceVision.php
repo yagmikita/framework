@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Application;
+namespace NG\Root\Record;
 
 class ResourceVision
 {

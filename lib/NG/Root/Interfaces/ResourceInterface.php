@@ -1,6 +1,6 @@
 <?php
 
-namespace NG\Base\Interfaces;
+namespace NG\Root\Interfaces;
 
 /**
  * Adds render behavoir

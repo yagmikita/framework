@@ -1,8 +1,10 @@
 <?php
 
-namespace NG\Base\Exceptions;
+namespace NG\Root\Exception;
 
-class FormatException extends Exception
+use NG\Root\Prorotype;
+
+class FormatException extends RootException
 {
     public function __construct($class, $method, $message = 'wrong format provided', $code = 501)
     {
