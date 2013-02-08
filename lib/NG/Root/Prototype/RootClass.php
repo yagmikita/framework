@@ -7,9 +7,11 @@ use NG\Root\Traits,
     NG\Root\Exception,
     NG\Root\Interfaces;
 
-class RootClass extends stdClass implements ErrorContainerInterface, ResourceInterface
+class RootClass extends \stdClass implements \NG\Root\Interfaces\ErrorContainerInterface,
+                                             \NG\Root\Interfaces\ResourceInterface
 {
-    use MagicGetTrait, MagicSetTrait;
+    use \NG\Root\Traits\MagicGetTrait,
+        \NG\Root\Traits\MagicSetTrait;
     
     /**
      * @var array

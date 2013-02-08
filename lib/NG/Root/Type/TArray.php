@@ -1,15 +1,16 @@
 <?php
 
-namespace NG\Types;
+namespace NG\Root\Type;
 
-use NG\Prototypes\Abstracts,        
-    NG\Prototypes\Interfaces,
-    NG\Application\Exceptions;
-
+use NG\Root\Prototype,
+    NG\Root\Excetion,
+    NG\Root\Interfaces;
+        
 /**
  * Implementation of Array class, which is the wrapper of a casual array type
  */
-class TArray extends TypeAbstract implements HasLengthInterface,  \Iterator
+class TArray extends \NG\Root\Prototype\RootType implements \NG\Root\Interfaces\LengthInterface,
+                                                            \Iterator
 {
     protected $_position;
     
@@ -24,7 +25,7 @@ class TArray extends TypeAbstract implements HasLengthInterface,  \Iterator
        return count($this->value()); 
     }
     
-    public function isValidType($value)
+    public function validateType($value)
     {
         return is_array($value);
     }
@@ -62,7 +63,7 @@ class TArray extends TypeAbstract implements HasLengthInterface,  \Iterator
     
     public function implode($separator = ',')
     {
-        return new TString(implode($separator, $this->__get('_value')));
+        return new \NG\Root\Type\TString(implode($separator, $this->__get('_value')));
     }
     
 }

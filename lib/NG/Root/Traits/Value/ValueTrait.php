@@ -1,11 +1,11 @@
 <?php
 
-namespace NG\Root\Traits;
+namespace NG\Root\Traits\Value;
 
-trait Value
+trait ValueTrait
 {
     public function value()
     {
         return $this->__get('_value');
-    }
+    }    
 }

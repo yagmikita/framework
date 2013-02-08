@@ -11,7 +11,7 @@ trait MagicSetTrait
         if (property_exists($this, $key)) {
             $this->$key = $value;
         } else {
-            throw new CodeException(__CLASS__, __METHOD__);
+            throw new \NG\Root\Exception\CodeException(__CLASS__, __METHOD__);
         }
     }
 }

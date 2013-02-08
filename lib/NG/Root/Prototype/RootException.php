@@ -2,9 +2,12 @@
 
 namespace NG\Root\Prototype;
 
-class RootException extends Exception
+use NG\Root\Traits;
+
+class RootException extends \Exception
 {
-    use MagicGetTrait, MagicSetTrait;
+    use \NG\Root\Traits\MagicGetTrait,
+        \NG\Root\Traits\MagicSetTrait;
     
     protected $_message;
     

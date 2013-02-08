@@ -2,9 +2,9 @@
 
 namespace NG\Root\Exception;
 
-use NG\Root\Prorotype;
+use NG\Root\Prototype;
 
-class CodeException extends RootException
+class CodeException extends \NG\Root\Prototype\RootException
 {
     public function __construct($class, $method, $message = 'source code execution fails', $code = 500)
     {

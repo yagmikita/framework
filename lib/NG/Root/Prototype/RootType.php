@@ -1,37 +1,32 @@
 <?php
 
-namespace NG\Root\Prototypes;
+namespace NG\Root\Prototype;
 
 use NG\Root\Traits,
     NG\Root\Exception,
-    NG\Root\Interfaces;
+    NG\Root\Interfaces,
+    NG\Root\Abstracts;
 
-class RootType implements ValueInterface, JsonSerializable, CanValidTypeInterface
+abstract class RootType extends \NG\Root\Abstracts\ValueAbstract implements \JsonSerializable
 {
-    const ERROR_TYPE = "The value is not of a valid type";
-    
-    use MagicGet, MagicSet, Value;
-    
-    protected $_value;
-        
     public function __construct($value, $initial)
     {
         if (is_null($value))
             $this->__set('_value', $initial);
-        elseif ($this->isValidType($value))
+        elseif ($this->validateType($value))
             $this->__set('_value', $value);
         else
-            throw new TypeException(self::ERROR_TYPE, 500);
+            throw new \NG\Root\Exception\TypeException(__CLASS__, __METHOD__);
     }
     
     public function jsonSerialize()
     {
-        return $this->value();
+        return json_encode($this);
     }
     
     public function __toString()
     {
-        return json_encode($this);
+        return json_encode($this->value());
     }
     
 }

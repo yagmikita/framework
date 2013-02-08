@@ -1,12 +1,12 @@
 <?php
 
-namespace NG\Tests\Types;
+namespace NGTest\Root\Type;
 
-use NG\Tests,
-    NG\Types as TE,
-    NG\Application\Exceptions;
+use NGTest,
+    NG\Root\Type,
+    NG\Root\Exception;
 
-class TStringTest extends NG\Tests\TestCase
+class TStringTest extends NGTest\TestCase
 {
     public $string;
     
@@ -45,26 +45,26 @@ class TStringTest extends NG\Tests\TestCase
      */
     public function testCreateSuccess($s)
     {
-        $ts = new TE\TString($s);
-        $this->assertTrue($ts instanceof TE\TString);
+        $ts = new \NG\Root\Type\TString($s);
+        $this->assertTrue($ts instanceof \NG\Root\Type\TString);
         $this->assertTrue($ts->length() == strlen($s));
     }
     
     public function testNoElements()
     {
-        $ts = new TE\TString();
+        $ts = new \NG\Root\Type\TString();
         $this->assertTrue($ts->length()==0);
-        $ts = new TE\TString(null);
+        $ts = new \NG\Root\Type\TString(null);
         $this->assertTrue($ts->length()==0);
     }
     
     /**
      * @dataProvider badValues
-     * @expectedException Application\Exceptions\TypeException
+     * @expectedException \NG\Root\Exception\TypeException
      */
     public function testCreateFails($ar)
     {
-        $ts = new TE\TString($ar);
+        $ts = new \NG\Root\Type\TString($ar);
     }
 
     /**
@@ -72,8 +72,8 @@ class TStringTest extends NG\Tests\TestCase
      */
     public function testExplodeWorks($s)
     {
-        $ts = new TE\TString($s);
-        $this->assertTrue($ts->explode() instanceof TE\TArray);
+        $ts = new \NG\Root\Type\TString($s);
+        $this->assertTrue($ts->explode() instanceof \NG\Root\Type\TArray);
     }
     
     /**
@@ -81,10 +81,12 @@ class TStringTest extends NG\Tests\TestCase
      */
     public function testCamelCaseWorks($s)
     {
-        $ts = new TE\TString($s);
-        $cC = $ts->toCamelCase(); echo $s . " => " . $cC->value();
-        $this->assertTrue($cC instanceof TE\TString);
-        $res = preg_match('/^\s*([a-z0-9]+)(([A-Z]{1}[a-z0-9]*)+)/', $cC->value());  
+        $ts = new \NG\Root\Type\TString($s);
+        $cC = $ts->toCamelCase();
+        //echo $s . " => " . $cC->value();
+        $this->assertTrue($cC instanceof \NG\Root\Type\TString);
+        $res = preg_match('/^\s*([a-z0-9]+)(([A-Z]{1}[a-z0-9]*)+)/', $cC->value()); 
+        //var_dump($cC->value());
         $this->assertTrue($res);
     }
     

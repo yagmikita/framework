@@ -1,12 +1,12 @@
 <?php
 
-namespace NGTest\Types;
+namespace NGTest\Root\Type;
 
-use NG\Types,
-    NGTest\Common\TestCase,
-    NG\Application\Exceptions;
+use NGTest,
+    NG\Root\Type,
+    NG\Root\Exception;
 
-class TArrayTest extends TestCase
+class TArrayTest extends \NGTest\TestCase
 {
     public $array;
     
@@ -38,27 +38,27 @@ class TArrayTest extends TestCase
      * @dataProvider goodValues
      */
     public function testCreateSuccess($ar)
-    {//var_dump($ar);exit;
-        $ta = new Types\TArray($ar);
-        $this->assertTrue($ta instanceof Types\TArray);
+    {
+        $ta = new \NG\Root\Type\TArray($ar);
+        $this->assertTrue($ta instanceof \NG\Root\Type\TArray);
         $this->assertTrue($ta->length() == count($ar));
     }
     
     public function testNoElements()
     {
-        $ta = new Types\TArray();
+        $ta = new \NG\Root\Type\TArray();
         $this->assertTrue($ta->length()==0);
-        $ta = new Types\TArray(null);
+        $ta = new \NG\Root\Type\TArray(null);
         $this->assertTrue($ta->length()==0);
     }
     
     /**
      * @dataProvider badValues
-     * @expectedException NG\Application\Exceptions\TypeException
+     * @expectedException \NG\Root\Exception\TypeException
      */
     public function testCreateFails($ar)
     {
-        $ta = new Types\TArray($ar);
+        $ta = new \NG\Root\Type\TArray($ar);
     }
 
     /**
@@ -66,8 +66,8 @@ class TArrayTest extends TestCase
      */
     public function testImplodeWorks(array $ar)
     {
-        $ta = new Types\TArray($ar);
-        $this->assertTrue($ta->implode() instanceof Types\TString);
+        $ta = new \NG\Root\Type\TArray($ar);
+        $this->assertTrue($ta->implode() instanceof \NG\Root\Type\TString);
     }
     
 }

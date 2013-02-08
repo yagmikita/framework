@@ -24,4 +24,9 @@ interface ValueInterface
      * @return mixed
      */
     public function value();
+    /**
+     * @param mixed $value
+     * @param boolean
+     */
+    public function validateType($value);    
 }
